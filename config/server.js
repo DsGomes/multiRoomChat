@@ -22,9 +22,9 @@ app.use(expressValidator())
 
 //cwd: process.cwd() para heroku encontrar o caminho da app
 consign()
-    .include({cwd: process.cwd()+'/app/routes'})
-    .then({cwd: process.cwd()+'/app/models'})
-    .then({cwd: process.cwd()+'/app/controllers'})
+    .include(process.cwd()+'/app/routes')
+    .then(process.cwd()+'/app/models')
+    .then(process.cwd()+'/app/controllers')
     .into(app)
 
 // exportar app
