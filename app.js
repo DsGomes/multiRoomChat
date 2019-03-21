@@ -7,7 +7,7 @@ const server = app.listen(PORT, function(){
     console.log('Server online')
 })
 
-const io = require('socket.io').listen(server)
+const io = require('socket.io')(server)
 
 app.set('io', io)
 
