@@ -1,6 +1,6 @@
 // importar modulos
 const express = require('express')
-const consign = require('consign')
+const load = require('express-load')
 const bodyParser = require('body-parser')
 const expressValidator = require('express-validator')
 
@@ -21,10 +21,9 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(expressValidator())
 
 //cwd: process.cwd() para heroku encontrar o caminho da app
-consign({ cwd:  'app' })
-    .include('routes')
-    .then('models')
-    .then('controllers')
+load('app/routes')
+    .then('app/models')
+    .then('app/controllers')
     .into(app)
 
 // exportar app
