@@ -20,10 +20,11 @@ app.use(bodyParser.urlencoded({extended: true}))
 // middlewares express-validator
 app.use(expressValidator())
 
+//cwd: process.cwd() para heroku encontrar o caminho da app
 consign()
-    .include('app/routes')
-    .then('app/models')
-    .then('app/controllers')
+    .include({cwd: process.cwd()+'/app/routes'})
+    .then({cwd: process.cwd()+'/app/models'})
+    .then({cwd: process.cwd()+'/app/controllers'})
     .into(app)
 
 // exportar app
